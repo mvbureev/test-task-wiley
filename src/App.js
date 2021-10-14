@@ -48,12 +48,35 @@ function App() {
     ...getActions(todo.id),
   }));
 
+  const sortBase = [{
+    key: 'title',
+    value: null,
+  }];
+  const [sort, setSort] = useState(sortBase || []);
+  const updateSortValue = (value) => {
+    if (value === 'asc') return 'desc';
+    if (value === 'desc') return null;
+    return 'asc';
+  };
+  const onChangeSort = (key) => {
+    setSort((prevState) => prevState.map((sortItem) => {
+      if (sortItem.key === key) {
+        return { ...sortItem, value: updateSortValue(sortItem.value) };
+      }
+      return sortItem;
+    }));
+  };
+
   return (
     <div className="App">
       <div className="todos">
         <NewTodoForm onSubmit={createNewTodo} />
         <Divider />
-        <TodoList list={todoItems} />
+        <TodoList
+          list={todoItems}
+          sort={sort}
+          onChangeSort={onChangeSort}
+        />
       </div>
     </div>
   );

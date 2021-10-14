@@ -26,3 +26,6 @@ export const saveTodoItemsToLocalStorage = (key, data) => localStorage.setItem(k
 // Convert it to base 36 (numbers + letters), and grab the first 9 characters
 // after the decimal.
 export const genId = () => `_${Math.random().toString(36).substr(2, 9)}`;
+
+// eslint-disable-next-line no-nested-ternary
+export const sortBy = (key) => (a, b) => ((a[key] > b[key]) ? 1 : ((b[key] > a[key]) ? -1 : 0));
