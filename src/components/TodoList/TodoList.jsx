@@ -4,7 +4,7 @@ import React, {
   useMemo,
 } from 'react';
 
-import TodoItem from '../TodoItem';
+import TodoListItem from '../TodoListItem';
 import styles from './TodoList.module.css';
 
 function TodoList({ list: listProp }) {
@@ -12,16 +12,14 @@ function TodoList({ list: listProp }) {
 
   return (
     <div className={styles.wrapper}>
-      <pre>
-        {JSON.stringify(list)}
-      </pre>
       <Space
         className={styles.space}
         direction="vertical"
       >
-        {list.map((todo) => (
-          <TodoItem
-            key={todo.title}
+        {list.map(({ id, ...todo }) => (
+          <TodoListItem
+            key={id}
+            id={id}
             {...todo}
           />
         ))}

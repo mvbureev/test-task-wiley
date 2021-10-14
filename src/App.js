@@ -1,5 +1,6 @@
 import 'antd/dist/antd.css';
 
+import { Divider } from 'antd';
 import React from 'react';
 
 import NewTodoForm from './components/NewTodoForm';
@@ -25,6 +26,7 @@ function App() {
     <div className="App">
       <div className="todos">
         <NewTodoForm onSubmit={(e) => console.log(e)} />
+        <Divider />
         <TodoList list={listMock} />
       </div>
     </div>

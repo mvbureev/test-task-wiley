@@ -4,9 +4,9 @@ import React, { useState } from 'react';
 
 import EditTodo from '../EditTodo';
 import Todo from '../Todo';
-import styles from './TodoItem.module.css';
+import styles from './TodoListItem.module.css';
 
-function TodoItem({
+function TodoListItem({
   title,
   checked,
   onChange,
@@ -45,14 +45,14 @@ function TodoItem({
   );
 }
 
-TodoItem.propTypes = {
+TodoListItem.propTypes = {
   title: PropTypes.string,
   checked: PropTypes.bool,
   onChange: PropTypes.func,
   onRemove: PropTypes.func,
   onCheckedChange: PropTypes.func,
 };
-TodoItem.defaultProps = {
+TodoListItem.defaultProps = {
   title: null,
   checked: false,
   onChange: () => {},
@@ -60,4 +60,4 @@ TodoItem.defaultProps = {
   onCheckedChange: () => {},
 };
 
-export default TodoItem;
+export default TodoListItem;
