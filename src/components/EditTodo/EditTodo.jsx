@@ -28,6 +28,10 @@ function EditTodo({
   const [value, setValue] = useState(title);
 
   const handleChange = () => onChange(value);
+  const handleKeyPress = (e) => {
+    if (e.key === 'Enter') handleChange();
+  };
+
   return (
     <>
       <Input
@@ -36,6 +40,7 @@ function EditTodo({
         className={styles.title}
         value={value}
         onChange={(e) => setValue(e.target.value)}
+        onKeyPress={handleKeyPress}
       />
       <Button
         size="small"
