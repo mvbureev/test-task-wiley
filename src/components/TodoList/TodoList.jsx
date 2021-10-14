@@ -1,8 +1,10 @@
+import { Space } from 'antd';
 import PropTypes from 'prop-types';
 import React, {
   useMemo,
 } from 'react';
 
+import TodoItem from '../TodoItem';
 import styles from './TodoList.module.css';
 
 function TodoList({ list: listProp }) {
@@ -13,6 +15,17 @@ function TodoList({ list: listProp }) {
       <pre>
         {JSON.stringify(list)}
       </pre>
+      <Space
+        className={styles.space}
+        direction="vertical"
+      >
+        {list.map((todo) => (
+          <TodoItem
+            key={todo.title}
+            {...todo}
+          />
+        ))}
+      </Space>
     </div>
   );
 }
