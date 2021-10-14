@@ -3,7 +3,11 @@ import {
   Input,
 } from 'antd';
 import PropTypes from 'prop-types';
-import React, { useState } from 'react';
+import React, {
+  useEffect,
+  useRef,
+  useState,
+} from 'react';
 
 import styles from './EditTodo.module.css';
 
@@ -12,12 +16,22 @@ function EditTodo({
   onChange,
   changeView,
 }) {
+  const inputRef = useRef(null);
+  useEffect(() => {
+    if (inputRef.current) {
+      inputRef.current.focus({
+        cursor: 'all',
+      });
+    }
+  }, [inputRef]);
+
   const [value, setValue] = useState(title);
 
   const handleChange = () => onChange(value);
   return (
     <>
       <Input
+        ref={inputRef}
         size="small"
         className={styles.title}
         value={value}

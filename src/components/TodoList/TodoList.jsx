@@ -16,10 +16,11 @@ function TodoList({ list: listProp }) {
         className={styles.space}
         direction="vertical"
       >
-        {list.map(({ id, ...todo }) => (
+        {list.map(({ title, id, ...todo }) => (
           <TodoListItem
-            key={id}
+            key={title}
             id={id}
+            title={title} // TODO: remove
             {...todo}
           />
         ))}
