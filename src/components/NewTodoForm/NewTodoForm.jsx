@@ -19,12 +19,17 @@ function NewTodoForm({ onSubmit }) {
     }
   };
 
+  const handleKeyPress = (e) => {
+    if (e.key === 'Enter') handleSubmit();
+  };
+
   return (
     <div className={styles.wrapper}>
       <Input
         placeholder="Add new todo..."
         value={todo}
         onChange={(e) => setTodo(e.target.value)}
+        onKeyDown={handleKeyPress}
       />
       <Button onClick={handleSubmit}>➕</Button>
     </div>
