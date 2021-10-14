@@ -16,13 +16,85 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
+    "lint": "eslint . --ext .js,.jsx",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
     "extends": [
-      "react-app",
-      "react-app/jest"
-    ]
+      "airbnb",
+      "plugin:react/recommended",
+      "plugin:import/recommended",
+      "plugin:react-hooks/recommended",
+      "plugin:array-func/all"
+    ],
+    "plugins": [
+      "react",
+      "simple-import-sort"
+    ],
+    "env": {
+      "browser": true,
+      "node": true,
+      "jest": true,
+      "es2021": true
+    },
+    "parserOptions": {
+      "ecmaVersion": 11,
+      "sourceType": "module",
+      "ecmaFeatures": {
+        "jsx": true
+      }
+    },
+  
+    "rules": {
+      "import/no-extraneous-dependencies": [
+        "error",
+        {
+          "devDependencies": true
+        }
+      ],
+      "no-param-reassign": "off",
+      "function-paren-newline": "off",
+      "arrow-body-style": [
+        2,
+        "as-needed"
+      ],
+      "comma-dangle": [
+        "error",
+        "always-multiline"
+      ],
+      "import/prefer-default-export": 0,
+      "indent": [
+        2,
+        2,
+        {
+          "SwitchCase": 1
+        }
+      ],
+      "max-len": 0,
+      "no-console": 1,
+      "react/forbid-prop-types": 2,
+      "react/jsx-max-props-per-line": [
+        2,
+        {
+          "maximum": 1
+        }
+      ],
+      "react/jsx-indent-props": [
+        2,
+        2
+      ],
+      "react/jsx-first-prop-new-line": [
+        2,
+        "multiline"
+      ],
+      "react/jsx-filename-extension": 0,
+      "react/jsx-props-no-spreading": "off",
+      "simple-import-sort/imports": "error",
+      "simple-import-sort/exports": "error",
+      "react-hooks/rules-of-hooks": "error",
+      "react-hooks/exhaustive-deps": 0,
+      "array-func/prefer-array-from": 0
+    }
   },
   "browserslist": {
     "production": [
@@ -35,5 +107,12 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "eslint-config-airbnb": "^18.2.1",
+    "eslint-config-airbnb-base": "^14.2.1",
+    "eslint-plugin-array-func": "^3.1.7",
+    "eslint-plugin-react-hooks": "^4.2.0",
+    "eslint-plugin-simple-import-sort": "^7.0.0"
   }
 }
